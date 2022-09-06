@@ -1,26 +1,25 @@
 {
   "name": "handy-ones",
-  "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "services/*"
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev --no-cache --parallel --continue",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "clean": "turbo run clean && rm -rf node_modules",
+    "graph": "turbo run build dev lint clean --graph=.graph.png",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
-    "prettier": "latest",
+    "@changesets/cli": "2.22.0",
+    "@handy-ones/eslint-config": "*",
+    "eslint": "8.15.0",
     "turbo": "latest"
   },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=14.0.0"
-  },
-  "dependencies": {},
   "packageManager": "npm@8.5.4"
 }

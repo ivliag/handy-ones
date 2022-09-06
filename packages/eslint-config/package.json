@@ -1,0 +1,16 @@
+{
+  "name": "@handy-ones/eslint-config",
+  "version": "0.0.0",
+  "main": ".eslintrc.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.36.2",
+    "@typescript-eslint/parser": "5.36.2",
+    "eslint": "8.23.0",
+    "eslint-plugin-react": "7.31.7",
+    "typescript": "4.8.2"
+  }
+}
