@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {MouseEvent, useEffect, useRef, useState} from 'react';
 import {joinClassNames} from './utils';
 
 import './handy-clamp.css';
@@ -6,7 +6,7 @@ import './handy-clamp.css';
 export interface Props {
     className?: string;
     lines?: number;
-    expandControl?: React.ReactElement;
+    expandControl?: React.ReactElement | null;
     children: React.ReactNode;
 }
 
@@ -16,13 +16,14 @@ const HandyClamp = (props: Props) => {
     const [isExpanded, setExpanded] = useState<boolean>(false);
     const [isOverflowing, setOwerflowing] = useState<boolean>(false);
 
-    const handleExpandClick = () => {
+    const handleExpandClick = (event?: MouseEvent) => {
+        event?.preventDefault();
         setExpanded(true);
     };
 
     const handleContainerClick = () => {
         if (!props.expandControl) {
-            handleExpandClick();
+            setExpanded(true);
         }
     }
 
@@ -43,21 +44,24 @@ const HandyClamp = (props: Props) => {
         return () => resizeObserver.disconnect();
     }, []);
 
+    const isTextClickable = !isExpanded && isOverflowing && !props.expandControl;
+    const isExpandControlShown = !isExpanded && isOverflowing && props.expandControl;
+
     return (
         <div
             className={joinClassNames('handy-clamp', props.className)}
             onClick={handleContainerClick}
         >
             <div
-                className='handy-clamp__text'
+                className={joinClassNames('handy-clamp__text', isTextClickable ? 'handy-clamp__text_clickable' : undefined)}
                 style={isExpanded ? undefined : {WebkitLineClamp: props.lines}}
                 ref={textBlockRef}
             >
                 {props.children}
             </div>
             {
-                !isExpanded && isOverflowing && props.expandControl &&
-                React.cloneElement(props.expandControl, {onClick: handleExpandClick})
+                isExpandControlShown &&
+                React.cloneElement(props.expandControl!, {onClick: handleExpandClick})
             }
         </div>
     );

@@ -4,15 +4,15 @@ export default {
     base: '/handy-ones/',
     addons: {
         a11y: {
-            enabled: true
+            enabled: false
         },
         action: {
             enabled: false,
             defaultState: []
         },
         control: {
-            enabled: false,
-            defaultState: {}
+            enabled: true,
+            defaultState: "opened"
         },
         ladle: {
             enabled: false

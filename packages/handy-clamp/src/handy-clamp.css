@@ -6,7 +6,7 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
 
-        &_cursor_pointer {
+        &_clickable {
             cursor: pointer;
         }
     }

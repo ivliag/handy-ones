@@ -17,6 +17,13 @@ module.exports = {
                 browser: false,
                 node: true
             }
+        },
+        {
+            files: ['**/*.tsx'],
+            rules: {
+                'react/prop-types': 'off',
+                'yandex-maps/prop-types': 'off'
+            }
         }
     ],
     settings: {
