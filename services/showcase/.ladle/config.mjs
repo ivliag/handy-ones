@@ -18,7 +18,7 @@ export default {
             enabled: false
         },
         mode: {
-            enabled: false,
+            enabled: true,
             defaultState: "full"
         },
         rtl: {
