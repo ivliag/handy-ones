@@ -1,0 +1,176 @@
+:root {
+    --control-size: 48px;
+    --control-margin: 24px;
+    --thumb-size: 32px;
+
+    --color-accent: #6951ff;
+    --color-control: #e3e5ed;
+    --color-control-active: #b5bbc9;
+    --color-control-disabled: #f2f3f7;
+    --color-white: #fff;
+}
+
+.handy-range-slider {
+    &__control {
+        position: relative;
+        -webkit-appearance: none;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        height: var(--control-size);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        outline: none;
+        margin-top: calc(-1 * var(--control-size));
+        background: transparent;
+    }
+
+    &__controls {
+        position: relative;
+        height: var(--control-size);
+        background: var(--color-control-disabled);
+        border-radius: var(--control-size);
+    }
+
+    &__track {
+        height: var(--control-size);
+        border-radius: var(--control-size);
+        background: var(--color-accent);
+    }
+
+    &__track_disabled {
+        background: var(--color-control);
+    }
+
+    &__grid {
+        position: absolute;
+        top: 0;
+        left: var(--control-margin);
+        right: var(--control-margin);
+        height: var(--control-size);
+    }
+
+    &__grid-line {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 8px;
+        background: var(--color-control-active);
+        border-radius: 1px;
+    }
+
+    &__grid-line_last,
+    &__grid-line_first {
+        height: var(--control-size);
+    }
+
+    &__grid-line_filled {
+        background: var(--color-white);
+        opacity: var(--opacity-minor);
+    }
+
+    &__thumb {
+        width: var(--control-size);
+        height: var(--control-size);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+
+        &:after {
+            content: '';
+            display: block;
+            border-radius: 50%;
+            width: var(--thumb-size);
+            height: var(--thumb-size);
+            background: var(--color-white);
+            box-shadow: var(--shadow-dark-small);
+        }
+    }
+
+    &__labels {
+        position: relative;
+        margin-top: 8px;
+        height: var(--thumb-size);
+    }
+
+    &__label {
+        position: absolute;
+        transform: translateX(-50%);
+        top: 0;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &__label_first {
+        transform: translateX(0);
+        text-align: left;
+        margin-left: var(--control-margin);
+    }
+
+    &__label_last {
+        transform: translateX(-100%);
+        text-align: right;
+        margin-left: calc(-1 * var(--control-margin));
+    }
+
+    &__control::-webkit-slider-runnable-track {
+        height: var(--control-size);
+        cursor: default;
+        background: transparent;
+    }
+
+    &__control::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: var(--control-size);
+        width: var(--control-size);
+        background: transparent;
+        cursor: pointer;
+        border: none;
+    }
+
+    &__control::-moz-range-track {
+        height: var(--control-size);
+        cursor: default;
+        background: transparent;
+    }
+
+    &__control::-moz-range-thumb {
+        height: var(--control-size);
+        width: var(--control-size);
+        background: transparent;
+        cursor: pointer;
+        border: none;
+    }
+
+    &__control::-ms-track {
+        height: var(--control-size);
+        cursor: default;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+
+    &__control::-ms-fill-lower {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    &__control::-ms-fill-upper {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    &__control::-ms-thumb {
+        height: var(--control-size);
+        width: var(--control-size);
+        background: transparent;
+        cursor: pointer;
+        border: none;
+    }
+}

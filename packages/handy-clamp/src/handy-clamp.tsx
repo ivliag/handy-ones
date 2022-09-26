@@ -1,13 +1,16 @@
 import React, {MouseEvent, useEffect, useRef, useState} from 'react';
 import {joinClassNames} from './utils';
 
-import './handy-clamp.css';
-
 export interface Props {
     className?: string;
     lines?: number;
     expandControl?: React.ReactElement | null;
     children: React.ReactNode;
+}
+
+const defaultProps: Partial<Props> = {
+    lines: 1,
+    expandControl: <button className={'handy-clamp__control'}>Expand</button>
 }
 
 const HandyClamp = (props: Props) => {
@@ -67,14 +70,8 @@ const HandyClamp = (props: Props) => {
     );
 }
 
-const defaultProps: Partial<Props> = {
-    lines: 1,
-    expandControl: <button className={'handy-clamp__control'}>Expand</button>
-}
-
-
 HandyClamp.defaultProps = defaultProps;
-
 HandyClamp.displayName = 'HandyClamp';
 
-export {HandyClamp};
+const memoizedHandyClamp = React.memo(HandyClamp);
+export {memoizedHandyClamp as HandyClamp};
