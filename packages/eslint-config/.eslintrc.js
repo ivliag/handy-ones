@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
     extends: [
         'eslint:recommended',
@@ -21,8 +19,13 @@ module.exports = {
         {
             files: ['**/*.tsx'],
             rules: {
-                'react/prop-types': 'off',
-                'yandex-maps/prop-types': 'off'
+                'react/prop-types': 'off'
+            }
+        },
+        {
+            files: ['**/*.ts', '**/*.tsx'],
+            rules: {
+                '@typescript-eslint/no-non-null-assertion': 'off'
             }
         }
     ],
@@ -30,5 +33,6 @@ module.exports = {
         react: {
             version: 'detect'
         }
-    }
+    },
+    ignorePatterns: ['dist']
 };

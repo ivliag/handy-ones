@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ["@handy-ones/eslint-config"]
+  extends: ['@handy-ones/eslint-config']
 };

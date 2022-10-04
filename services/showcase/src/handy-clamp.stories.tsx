@@ -1,8 +1,8 @@
 import {HandyClamp, HandyClampProps} from '@handy-ones/handy-clamp';
-import type {Story} from "@ladle/react";
+import type {Story} from '@ladle/react';
 
 export default {
-    title: "Handy clamp"
+    title: 'Handy clamp'
 }
 
 const text = `This book is largely concerned with Hobbits, and from its pages a reader may discover
@@ -26,7 +26,7 @@ export const HiddenExpandControl = () => (
 );
 
 export const CustomExpandControl = () => (
-    <HandyClamp lines={2} expandControl={<a href="#">Expand</a>}>
+    <HandyClamp lines={2} expandControl={<a href='#'>Expand</a>}>
         {text}
     </HandyClamp>
 );

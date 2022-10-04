@@ -94,7 +94,7 @@
     &__labels {
         position: relative;
         margin-top: 8px;
-        height: var(--thumb-size);
+        height: 1em;
     }
 
     &__label {
@@ -172,5 +172,17 @@
         background: transparent;
         cursor: pointer;
         border: none;
+    }
+
+    &__control_disabled::-webkit-slider-thumb {
+        cursor: default;
+    }
+
+    &__control_disabled::-moz-range-thumb {
+        cursor: default;
+    }
+
+    &__control_disabled::-ms-thumb {
+        cursor: default;
     }
 }

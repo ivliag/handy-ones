@@ -42,7 +42,6 @@ const HandyClamp = (props: Props) => {
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver(handleResize);
-
         resizeObserver.observe(textBlockRef.current!);
         return () => resizeObserver.disconnect();
     }, []);

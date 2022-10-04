@@ -15,7 +15,10 @@ export interface Props {
     gridStep?: number;
     labels?: Label[];
     disabled?: boolean;
-    onChange?: (event: React.ChangeEvent | React.MouseEvent) => void;
+    onChange?: (
+        event: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLDivElement>,
+        value: number
+    ) => void;
 }
 
 const defaultProps: Partial<Props> = {
@@ -85,15 +88,15 @@ const HandyRangeSlider = (props: Props) => {
         };
     }
 
-    const handleChange = (event: React.ChangeEvent) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (props.onChange) {
-            props.onChange(event);
+            props.onChange(event, Number(event.target.value));
         }
     };
 
-    const handleLabelClick = (event: React.MouseEvent) => {
+    const handleLabelClick = (event: React.MouseEvent<HTMLDivElement>, value: number) => {
         if (props.onChange) {
-            props.onChange(event);
+            props.onChange(event, value);
         }
     };
 
@@ -114,7 +117,7 @@ const HandyRangeSlider = (props: Props) => {
                                     )
                                 }
                                 style={getLabelStyle(label.value)}
-                                onClick={(event) => handleLabelClick(event)}
+                                onClick={(event) => handleLabelClick(event, label.value)}
                             >
                                 {label.text || label.value}
                             </div>
@@ -158,12 +161,13 @@ const HandyRangeSlider = (props: Props) => {
 
     const valuePercent = getValueAsPercent(props.value);
     const thumbCorrection = getThumbCorrection(props.value);
+    const disabled = Boolean(props.disabled);
 
     return (
         <div className={cn()}>
             <div className={cn('controls')}>
                 <div
-                    className={cn('track', {disabled: Boolean(props.disabled)})}
+                    className={cn('track', {disabled})}
                     style={{
                         width: `calc(${valuePercent}% + ${THUMB_SIZE - thumbCorrection}px)`
                     }}
@@ -175,7 +179,7 @@ const HandyRangeSlider = (props: Props) => {
                         </div>
                     }
                     <span
-                        className={cn('thumb', {disabled: Boolean(props.disabled)})}
+                        className={cn('thumb', {disabled})}
                         style={{
                             left: `${valuePercent}%`,
                             transform: `translate(-${thumbCorrection}px)`
@@ -184,8 +188,8 @@ const HandyRangeSlider = (props: Props) => {
                 </div>
             </div>
             <input
-                className={cn('control')}
-                type="range"
+                className={cn('control', {disabled})}
+                type='range'
                 value={props.value}
                 min={props.min}
                 max={props.max}

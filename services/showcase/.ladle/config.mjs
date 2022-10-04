@@ -1,7 +1,14 @@
-export default {
+const globalStyles = `
+    body {
+        font-family: sans-serif;
+    }
+`
+
+const ladleConfig = {
     port: 8080,
     outDir: 'dist',
     base: '/handy-ones/',
+    appendToHead: `<style>${globalStyles}</style>`,
     addons: {
         a11y: {
             enabled: false
@@ -12,14 +19,14 @@ export default {
         },
         control: {
             enabled: true,
-            defaultState: "opened"
+            defaultState: 'opened'
         },
         ladle: {
             enabled: false
         },
         mode: {
             enabled: true,
-            defaultState: "full"
+            defaultState: 'full'
         },
         rtl: {
             enabled: false,
@@ -31,7 +38,9 @@ export default {
         },
         theme: {
             enabled: false,
-            defaultState: "light"
+            defaultState: 'light'
         }
     }
 };
+
+export default ladleConfig;
