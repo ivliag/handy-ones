@@ -5,6 +5,16 @@
     "version": 1
   },
   "stories": {
+    "about--handy-ones": {
+      "name": "Handy ones",
+      "levels": [
+        "About"
+      ],
+      "locStart": 1,
+      "locEnd": 15,
+      "filePath": "src/about.stories.tsx",
+      "meta": {}
+    },
     "handy-clamp--basic": {
       "name": "Basic",
       "levels": [
