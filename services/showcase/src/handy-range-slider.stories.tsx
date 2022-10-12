@@ -75,10 +75,18 @@ export const CustomLabels = () => {
     const handleChange = (event: React.SyntheticEvent, value: number) => {
         setValue(Number(value));
     }
+    const style = `
+        .colored .handy-range-slider__track {
+            background-color: #ffe53b;
+            background-image: linear-gradient(90deg, #ffe53b 0%, #ff2525 74%);
+        }
+    `
 
     return (
         <>
+            <style>{style}</style>
             <HandyRangeSlider
+                className={'colored'}
                 min={50}
                 max={100}
                 value={value}
@@ -90,6 +98,7 @@ export const CustomLabels = () => {
                     {value: 87.5, text: '😍'},
                     {value: 100, text: '❤️'}
                 ]}
+
             />
             <h3>Value: {value}</h3>
         </>

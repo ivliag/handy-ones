@@ -7,9 +7,9 @@
     "access": "public"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.36.2",
+    "@typescript-eslint/eslint-plugin": "5.40.0",
     "@typescript-eslint/parser": "5.36.2",
-    "eslint": "8.23.0",
+    "eslint": "8.25.0",
     "eslint-plugin-react": "7.31.7",
     "typescript": "4.8.2"
   }

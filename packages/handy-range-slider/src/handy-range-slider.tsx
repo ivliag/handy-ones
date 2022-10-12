@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 export interface Label {
     value: number;
@@ -26,16 +26,16 @@ const defaultProps: Partial<Props> = {
     showGrid: true
 };
 
-const THUMB_SIZE = 48;
-
-const createCn = (blockName: string) => {
+const createCn = (blockName: string, mixed?: string) => {
     return (
         elementName?: string | Record<string, boolean | string>,
         modifiers?: Record<string, boolean | string>
     ) => {
-        const base = elementName && typeof elementName === 'string' ? `${blockName}__${elementName}` : blockName;
-        const resolvedModifiers = modifiers ? modifiers : typeof elementName === 'object' ? elementName : undefined
+        const isCreatingElement = elementName && typeof elementName === 'string';
+        const isCreatingBlock = !isCreatingElement;
 
+        const base = isCreatingElement ? `${blockName}__${elementName}` : blockName;
+        const resolvedModifiers = modifiers ? modifiers : typeof elementName === 'object' ? elementName : undefined
         const result = [base];
 
         if (resolvedModifiers) {
@@ -51,21 +51,31 @@ const createCn = (blockName: string) => {
                 })
         }
 
+        if (isCreatingBlock && mixed) {
+            result.push(mixed);
+        }
+
         return result.join(' ');
     }
 }
 
-const cn = createCn('handy-range-slider');
-
 const HandyRangeSlider = (props: Props) => {
+    const cn = createCn('handy-range-slider', props.className);
+    const thumbRef = useRef<HTMLSpanElement>(null);
+    const [thumbSize, setThumbSize] = useState(0);
+
+    useEffect(() => {
+        setThumbSize(thumbRef.current?.getBoundingClientRect().width || 0)
+    }, []);
+
     const getThumbCorrection = (value: number) => {
         const valuePercent = getValueAsPercent(value);
-        return THUMB_SIZE / 100 * valuePercent;
+        return thumbSize / 100 * valuePercent;
     }
 
     const getLabelCorrection = (value: number) => {
         const valuePercent = getValueAsPercent(value);
-        return THUMB_SIZE * ((50 - valuePercent) / 100);
+        return thumbSize * ((50 - valuePercent) / 100);
     }
 
     const getValueAsPercent = (value: number) => {
@@ -169,7 +179,7 @@ const HandyRangeSlider = (props: Props) => {
                 <div
                     className={cn('track', {disabled})}
                     style={{
-                        width: `calc(${valuePercent}% + ${THUMB_SIZE - thumbCorrection}px)`
+                        width: `calc(${valuePercent}% + ${thumbSize - thumbCorrection}px)`
                     }}
                 >
                     {
@@ -179,6 +189,7 @@ const HandyRangeSlider = (props: Props) => {
                         </div>
                     }
                     <span
+                        ref={thumbRef}
                         className={cn('thumb', {disabled})}
                         style={{
                             left: `${valuePercent}%`,

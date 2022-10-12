@@ -5,7 +5,9 @@
       "dependsOn": ["^build"]
     },
     "clean": {},
-    "lint": {},
+    "lint": {
+      "dependsOn": ["build"]
+    },
     "dev": {
       "cache": false
     }

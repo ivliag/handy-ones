@@ -34,7 +34,7 @@ const ladleConfig = {
         },
         source: {
             enabled: true,
-            defaultState: false
+            defaultState: 'opened'
         },
         theme: {
             enabled: false,

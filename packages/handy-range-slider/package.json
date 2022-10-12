@@ -1,7 +1,6 @@
 {
   "name": "@handy-ones/handy-range-slider",
-  "version": "0.0.0",
-  "sideEffects": false,
+  "version": "1.0.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "files": [
@@ -14,7 +13,7 @@
     "build:css": "postcss ./src/**/*.css --dir ./dist",
     "dev": "concurrently \"npm:dev:*\"",
     "build": "rm -rf ./dist && concurrently \"npm:build:*\"",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx . && tsc --noEmit",
+    "lint": "eslint . && tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
@@ -30,8 +29,5 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
