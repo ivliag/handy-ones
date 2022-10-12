@@ -1,0 +1,119 @@
+{
+  "about": {
+    "homepage": "https://www.ladle.dev",
+    "github": "https://github.com/tajo/ladle",
+    "version": 1
+  },
+  "stories": {
+    "handy-clamp--basic": {
+      "name": "Basic",
+      "levels": [
+        "Handy clamp"
+      ],
+      "locStart": 16,
+      "locEnd": 20,
+      "filePath": "src/handy-clamp.stories.tsx",
+      "meta": {}
+    },
+    "handy-clamp--hidden-expand-control": {
+      "name": "Hidden expand control",
+      "levels": [
+        "Handy clamp"
+      ],
+      "locStart": 22,
+      "locEnd": 26,
+      "filePath": "src/handy-clamp.stories.tsx",
+      "meta": {}
+    },
+    "handy-clamp--custom-expand-control": {
+      "name": "Custom expand control",
+      "levels": [
+        "Handy clamp"
+      ],
+      "locStart": 28,
+      "locEnd": 32,
+      "filePath": "src/handy-clamp.stories.tsx",
+      "meta": {}
+    },
+    "handy-clamp--interactive": {
+      "name": "Interactive",
+      "levels": [
+        "Handy clamp"
+      ],
+      "locStart": 34,
+      "locEnd": 43,
+      "filePath": "src/handy-clamp.stories.tsx",
+      "meta": {}
+    },
+    "handy-range-slider--basic": {
+      "name": "Basic",
+      "levels": [
+        "Handy range slider"
+      ],
+      "locStart": 8,
+      "locEnd": 26,
+      "filePath": "src/handy-range-slider.stories.tsx",
+      "meta": {}
+    },
+    "handy-range-slider--disabled": {
+      "name": "Disabled",
+      "levels": [
+        "Handy range slider"
+      ],
+      "locStart": 28,
+      "locEnd": 43,
+      "filePath": "src/handy-range-slider.stories.tsx",
+      "meta": {}
+    },
+    "handy-range-slider--default-labels": {
+      "name": "Default labels",
+      "levels": [
+        "Handy range slider"
+      ],
+      "locStart": 45,
+      "locEnd": 71,
+      "filePath": "src/handy-range-slider.stories.tsx",
+      "meta": {}
+    },
+    "handy-range-slider--custom-labels": {
+      "name": "Custom labels",
+      "levels": [
+        "Handy range slider"
+      ],
+      "locStart": 73,
+      "locEnd": 106,
+      "filePath": "src/handy-range-slider.stories.tsx",
+      "meta": {}
+    },
+    "handy-svg--basic": {
+      "name": "Basic",
+      "levels": [
+        "Handy svg"
+      ],
+      "locStart": 14,
+      "locEnd": 22,
+      "filePath": "src/handy-svg.stories.tsx",
+      "meta": {}
+    },
+    "handy-svg--colored": {
+      "name": "Colored",
+      "levels": [
+        "Handy svg"
+      ],
+      "locStart": 24,
+      "locEnd": 34,
+      "filePath": "src/handy-svg.stories.tsx",
+      "meta": {}
+    },
+    "handy-svg--without-react": {
+      "name": "Without react",
+      "levels": [
+        "Handy svg"
+      ],
+      "locStart": 36,
+      "locEnd": 61,
+      "filePath": "src/handy-svg.stories.tsx",
+      "meta": {}
+    }
+  }
+}
