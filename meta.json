@@ -11,7 +11,7 @@
         "About"
       ],
       "locStart": 1,
-      "locEnd": 15,
+      "locEnd": 17,
       "filePath": "src/about.stories.tsx",
       "meta": {}
     },
@@ -45,16 +45,6 @@
       "filePath": "src/handy-clamp.stories.tsx",
       "meta": {}
     },
-    "handy-clamp--interactive": {
-      "name": "Interactive",
-      "levels": [
-        "Handy clamp"
-      ],
-      "locStart": 34,
-      "locEnd": 43,
-      "filePath": "src/handy-clamp.stories.tsx",
-      "meta": {}
-    },
     "handy-range-slider--basic": {
       "name": "Basic",
       "levels": [
@@ -85,14 +75,34 @@
       "filePath": "src/handy-range-slider.stories.tsx",
       "meta": {}
     },
-    "handy-range-slider--custom-labels": {
-      "name": "Custom labels",
+    "handy-range-slider--stylized": {
+      "name": "Stylized",
       "levels": [
         "Handy range slider"
       ],
       "locStart": 73,
       "locEnd": 106,
       "filePath": "src/handy-range-slider.stories.tsx",
+      "meta": {}
+    },
+    "handy-scroll-strip--basic": {
+      "name": "Basic",
+      "levels": [
+        "Handy scroll strip"
+      ],
+      "locStart": 31,
+      "locEnd": 49,
+      "filePath": "src/handy-scroll-strip.stories.tsx",
+      "meta": {}
+    },
+    "handy-scroll-strip--imperative-hanlers": {
+      "name": "Imperative hanlers",
+      "levels": [
+        "Handy scroll strip"
+      ],
+      "locStart": 51,
+      "locEnd": 91,
+      "filePath": "src/handy-scroll-strip.stories.tsx",
       "meta": {}
     },
     "handy-svg--basic": {
