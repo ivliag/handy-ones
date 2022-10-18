@@ -1,0 +1,13 @@
+.handy-clamp {
+    position: relative;
+
+    &__text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        &_clickable {
+            cursor: pointer;
+        }
+    }
+}

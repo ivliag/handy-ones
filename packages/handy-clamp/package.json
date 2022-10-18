@@ -1,0 +1,34 @@
+{
+  "name": "@handy-ones/handy-clamp",
+  "version": "1.0.1",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**",
+    "src/**"
+  ],
+  "scripts": {
+    "dev:ts": "tsc --outDir ./dist --watch",
+    "build:ts": "tsc --outDir ./dist",
+    "dev:css": "postcss ./src/**/*.css --dir ./dist --watch",
+    "build:css": "postcss ./src/**/*.css --dir ./dist",
+    "dev": "concurrently \"npm:dev:*\"",
+    "build": "rm -rf ./dist && concurrently \"npm:build:*\"",
+    "lint": "eslint . --ignore && tsc --noEmit",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@handy-ones/eslint-config": "*",
+    "@handy-ones/tsconfig": "*",
+    "@types/react": "17.0.2",
+    "concurrently": "7.4.0",
+    "postcss": "8.4.16",
+    "postcss-cli": "10.0.0",
+    "postcss-nested": "5.0.6",
+    "react": "17.0.2",
+    "typescript": "4.7.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+}

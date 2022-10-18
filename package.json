@@ -1,0 +1,31 @@
+{
+  "name": "handy-ones",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivliag/handy-ones.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivliag/handy-ones/issues"
+  },
+  "homepage": "https://github.com/ivliag/handy-ones#readme",
+  "scripts": {
+    "build": "turbo run build",
+    "deploy": "turbo run deploy",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "graph": "turbo run build --graph=.graph.png",
+    "bump": "changeset version",
+    "publish": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.22.0",
+    "turbo": "latest"
+  },
+  "packageManager": "npm@8.5.4"
+}
