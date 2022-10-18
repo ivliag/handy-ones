@@ -22,7 +22,7 @@
     "graph": "turbo run build --graph=.graph.png",
     "bump": "changeset version",
     "changeset": "changeset",
-    "publish": "turbo run build && changeset publish"
+    "publish": "npm i && turbo run build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "2.22.0",

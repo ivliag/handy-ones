@@ -1,8 +1,10 @@
-<img width="200" alt="handy_svg" src="https://user-images.githubusercontent.com/2974415/162402689-e1382bba-9fe1-4bf8-8d45-bc28a78ab5c7.png">
+<img
+    width="200"
+    alt="handy svg"
+    src="https://raw.githubusercontent.com/ivliag/handy-ones/master/services/showcase/src/assets/handy-svg.png"
+/>
 
-External SVGs that you can style
-
-![lint](https://github.com/ivliag/handy-svg/actions/workflows/lint.yml/badge.svg)
+External SVGs that you can style. [Demo](https://ivliag.github.io/handy-ones/?story=handy-svg--colored)
 
 ## How it works
 1. Fetches your SVGs in browser with `fetch` request. And caches of course.
@@ -19,13 +21,13 @@ External SVGs that you can style
 
 #### Install it from npm
 ```
-npm i handy-svg
+npm i @handy-ones/handy-svg
 ```
 
 #### React
 ```typescript
 
-import {HandySvg} from 'handy-svg';
+import {HandySvg} from '@handy-ones/handy-svg';
 import iconSrc from './icon.svg';
 
 export const Icon = () => (
@@ -60,7 +62,7 @@ But in fact there is no difference for the **handy-svg** where you get your SVGs
 You may also use **handy-svg** without React at all.
 
 ```typescript
-import {injector} from 'handy-svg/lib/injector';
+import {injector} from '@handy-ones/handy-svg';
 
 const src = "https://cdn-server.net/icon.svg";
 
@@ -74,12 +76,18 @@ const id = injector.getId(src);
 const svg = `<svg><use href="#${id}" /></svg>`;
 ```
 
+## Demo
+Please click `</>` button to see the demo souce code:
+1. [Basic usage](https://ivliag.github.io/handy-ones/?story=handy-svg--basic)
+2. [With `fill` color set in `css`](https://ivliag.github.io/handy-ones/?story=handy-svg--colored)
+3. [Without `React`](https://ivliag.github.io/handy-ones/?story=handy-svg--without-react)
+
 ## API
 #### `<HandySvg />`
 ```typescript
-import {HandySvg} from 'handy-svg';
+import {HandySvg} from '@handy-ones/handy-svg';
 
-type HandySvgProps = {
+interface HandySvgProps {
   src: string; // your icon url
   loadTimeot?: number; // load timeout. 4800 by default
   loadRetryCount?: number; // load retry. 2 by default
@@ -91,9 +99,9 @@ type HandySvgProps = {
 
 #### `injector.load()`
 ```typescript
-import {injector} from 'handy-svg/lib/injector';
+import {injector} from '@handy-ones/handy-svg';
 
-type LoadOptions = {
+interface LoadOptions {
     flushImmediate?: boolean; // inject icon to the body without debouncing
     timeout?: number; // load timeout. 4800 by default
     retryCount?: number; // load retry. 2 by default
@@ -104,7 +112,7 @@ injector.load(src: string, options: LoadOptions): Promise<void>;
 
 #### `injector.getId()`
 ```typescript
-import {injector} from 'handy-svg/lib/injector';
+import {injector} from '@handy-ones/handy-svg';
 
 injector.getId(src: string): string;
 ```

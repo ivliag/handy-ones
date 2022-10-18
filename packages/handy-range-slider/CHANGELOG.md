@@ -1,5 +1,11 @@
 # @handy-ones/handy-range-slider
 
+## 1.0.3
+
+### Patch Changes
+
+- Add thumb shadow
+
 ## 1.0.2
 
 ### Patch Changes

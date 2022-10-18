@@ -13,8 +13,8 @@ export interface Props {
 }
 
 export interface ImperativeHandlers {
-    getContainer: () => HTMLDivElement | null,
-    getScrollLeft: () => number,
+    getContainer: () => HTMLDivElement | null;
+    getScrollLeft: () => number;
     scrollTo: (value: number) => void;
 }
 

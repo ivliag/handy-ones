@@ -8,6 +8,7 @@
     --color-control-active: #b5bbc9;
     --color-control-disabled: #f2f3f7;
     --color-white: #fff;
+    --thumb-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .handy-range-slider {
@@ -87,7 +88,7 @@
             width: var(--thumb-size);
             height: var(--thumb-size);
             background: var(--color-white);
-            box-shadow: var(--shadow-dark-small);
+            box-shadow: var(--thumb-shadow);
         }
     }
 

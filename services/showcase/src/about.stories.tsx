@@ -1,8 +1,8 @@
 export const HandyOnes = () => (
     <div>
         <img
-            src="https://raw.githubusercontent.com/ivliag/handy-ones/master/services/showcase/logo.png"
-            height={220 / 3 * 2}
+            src="https://raw.githubusercontent.com/ivliag/handy-ones/master/services/showcase/src/assets/handy-ones.png"
+            height={200}
         />
         <h1>This is Handy Ones</h1>
         <p>Not a library, but a bunch of useful tools and components to make your life easier</p>
