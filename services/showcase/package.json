@@ -1,5 +1,6 @@
 {
   "name": "@handy-ones/showcase",
+  "private": true,
   "description": "Docs and demos for @handy-ones library",
   "version": "0.0.0",
   "scripts": {

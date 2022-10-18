@@ -1,6 +1,6 @@
 {
   "name": "@handy-ones/handy-svg",
-  "version": "1.0.8",
+  "version": "1.0.0",
   "description": "The most handy way to use <svg> on the web",
   "license": "MIT",
   "main": "./dist/index.js",

@@ -1,10 +1,9 @@
 {
   "name": "@handy-ones/tsconfig",
-  "version": "0.0.0",
-  "private": true,
-  "main": "index.js",
-  "files": [
-    "./base.json",
-    "./react-library.json"
-  ]
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "4.7.4"
+  }
 }

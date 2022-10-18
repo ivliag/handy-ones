@@ -20,9 +20,8 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "graph": "turbo run build --graph=.graph.png",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "bump": "changeset version",
+    "publish": "turbo run build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "2.22.0",
