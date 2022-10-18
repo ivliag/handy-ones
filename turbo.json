@@ -7,10 +7,10 @@
     "deploy": {
       "dependsOn": ["build"]
     },
-    "clean": {},
     "lint": {
       "dependsOn": ["build"]
     },
+    "clean": {},
     "dev": {
       "cache": false
     }

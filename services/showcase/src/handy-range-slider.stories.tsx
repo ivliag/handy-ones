@@ -70,7 +70,7 @@ export const DefaultLabels = () => {
     );
 };
 
-export const CustomLabels = () => {
+export const Stylized = () => {
     const [value, setValue] = useState(60);
     const handleChange = (event: React.SyntheticEvent, value: number) => {
         setValue(Number(value));

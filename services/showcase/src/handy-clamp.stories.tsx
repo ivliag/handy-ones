@@ -30,20 +30,3 @@ export const CustomExpandControl = () => (
         {text}
     </HandyClamp>
 );
-
-export const Interactive: Story<HandyClampProps> = (props) => (
-    <HandyClamp
-        lines={props.lines}
-        expandControl={
-            <span dangerouslySetInnerHTML={{__html: props.expandControl as unknown as string}} />
-        }
-    >
-        {props.children}
-    </HandyClamp>
-);
-
-Interactive.args = {
-    children: text,
-    expandControl: '<button>Expand</button>',
-    lines: 2,
-};

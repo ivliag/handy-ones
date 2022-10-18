@@ -1,8 +1,8 @@
 {
     "extends": "@handy-ones/tsconfig/react-library.json",
     "compilerOptions": {
-        "baseUrl": "."
+        "baseUrl": ".",
     },
     "include": [".eslintrc.js", "**/*"],
-    "exclude": ["dist", "build", "node_modules"]
+    "exclude": ["dist", "node_modules"]
 }

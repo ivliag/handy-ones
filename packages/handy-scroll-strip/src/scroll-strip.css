@@ -1,0 +1,50 @@
+.handy-scroll-strip {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    &_height_available {
+        height: 100%;
+    }
+
+    &__content {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    &_height_available &__content {
+        height: 100%;
+    }
+
+    &__content::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+    }
+
+    &__right-fade,
+    &__left-fade {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 32px;
+        z-index: 2;
+    }
+
+    &__right-fade {
+        right: 0;
+    }
+
+    &__left-fade {
+        left: 0;
+    }
+
+    &__right-fade {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+    }
+
+    &__left-fade {
+        background: linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+    }
+}

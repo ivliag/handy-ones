@@ -10,14 +10,14 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@handy-ones/eslint-config": "*",
     "@handy-ones/handy-clamp": "*",
-    "@handy-ones/tsconfig": "*",
     "@ladle/react": "2.4.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@handy-ones/eslint-config": "*",
+    "@handy-ones/tsconfig": "*",
     "gh-pages": "4.0.0"
   }
 }

@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "dev:ts": "tsc --outDir ./dist --watch",
     "build:ts": "tsc --outDir ./dist",
-    "dev:css": "postcss ./src/**/*.css --dir ./dist --watch",
-    "build:css": "postcss ./src/**/*.css --dir ./dist",
+    "dev:css": "postcss ./src/**/*.css --dir ./dist --base ./src --watch",
+    "build:css": "postcss ./src/**/*.css --dir ./dist --base ./src",
     "dev": "concurrently \"npm:dev:*\"",
     "build": "rm -rf ./dist && concurrently \"npm:build:*\"",
     "lint": "eslint . && tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "bem-react-classname": "1.3.2"
   },
   "devDependencies": {
     "@handy-ones/eslint-config": "*",

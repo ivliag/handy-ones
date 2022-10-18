@@ -13,7 +13,7 @@ External SVGs that you can style
 ## Why
 1. Sprites may become huge, containing hundreds of icons, and you don't need all of your icons on every page.
 2. Styling with css is a must-have, and this is the only way of getting it except for inlining.
-3. Inlining SVGs with React might be painful (there is a [tool](https://react-svgr.com/) though), it also increases the bundle size and just doesn't feel right.
+3. Inlining SVGs with React might be painful (there is a [tool](https://react-svgr.com/) though), it also increases the bundle size a   nd just doesn't feel right.
 
 ## Usage
 
@@ -113,4 +113,4 @@ injector.getId(src: string): string;
 You should add hostnames of your icons to the [connect-src](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src) directive of your [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) header for this to work properly.
 
 ## License
-[MIT](https://github.com/ivliag/handy-svg/blob/master/LICENSE)
+[MIT](https://github.com/ivliag/handy-ones/blob/master/packages/handy-svg/LICENSE)

@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {createCn} from 'bem-react-classname';
 
 export interface Label {
     value: number;
@@ -25,39 +26,6 @@ const defaultProps: Partial<Props> = {
     step: 1,
     showGrid: true
 };
-
-const createCn = (blockName: string, mixed?: string) => {
-    return (
-        elementName?: string | Record<string, boolean | string>,
-        modifiers?: Record<string, boolean | string>
-    ) => {
-        const isCreatingElement = elementName && typeof elementName === 'string';
-        const isCreatingBlock = !isCreatingElement;
-
-        const base = isCreatingElement ? `${blockName}__${elementName}` : blockName;
-        const resolvedModifiers = modifiers ? modifiers : typeof elementName === 'object' ? elementName : undefined
-        const result = [base];
-
-        if (resolvedModifiers) {
-            Object.entries(resolvedModifiers)
-                .forEach(([key, value]) => {
-                    if (typeof value === 'boolean' && value) {
-                        result.push(`${base}_${key}`);
-                    }
-
-                    if (typeof value === 'string') {
-                        result.push(`${base}_${key}_${value}`);
-                    }
-                })
-        }
-
-        if (isCreatingBlock && mixed) {
-            result.push(mixed);
-        }
-
-        return result.join(' ');
-    }
-}
 
 const HandyRangeSlider = (props: Props) => {
     const cn = createCn('handy-range-slider', props.className);
