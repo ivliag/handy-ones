@@ -21,6 +21,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "graph": "turbo run build --graph=.graph.png",
     "bump": "changeset version",
+    "changeset": "changeset",
     "publish": "turbo run build && changeset publish"
   },
   "devDependencies": {
