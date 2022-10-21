@@ -1,5 +1,4 @@
-import {HandyClamp, HandyClampProps} from '@handy-ones/handy-clamp';
-import type {Story} from '@ladle/react';
+import {HandyClamp} from '@handy-ones/handy-clamp';
 
 export default {
     title: 'Handy clamp'

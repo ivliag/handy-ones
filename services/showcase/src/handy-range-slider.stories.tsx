@@ -98,7 +98,6 @@ export const Stylized = () => {
                     {value: 87.5, text: '😍'},
                     {value: 100, text: '❤️'}
                 ]}
-
             />
             <h3>Value: {value}</h3>
         </>
