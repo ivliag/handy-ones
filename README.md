@@ -4,6 +4,8 @@
     alt="handy ones logo"
 />
 
+![lint](https://github.com/ivliag/handy-ones/actions/workflows/lint.yml/badge.svg)
+
 Not a library, but a bunch of useful tools and components to make your life easier
  
 1. [`handy-clamp`](https://github.com/ivliag/handy-ones/tree/master/packages/handy-clamp) is a React component to nicely cut extra text
