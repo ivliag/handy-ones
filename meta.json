@@ -20,8 +20,8 @@
       "levels": [
         "Handy clamp"
       ],
-      "locStart": 16,
-      "locEnd": 20,
+      "locStart": 15,
+      "locEnd": 19,
       "filePath": "src/handy-clamp.stories.tsx",
       "meta": {}
     },
@@ -30,8 +30,8 @@
       "levels": [
         "Handy clamp"
       ],
-      "locStart": 22,
-      "locEnd": 26,
+      "locStart": 21,
+      "locEnd": 25,
       "filePath": "src/handy-clamp.stories.tsx",
       "meta": {}
     },
@@ -40,8 +40,8 @@
       "levels": [
         "Handy clamp"
       ],
-      "locStart": 28,
-      "locEnd": 32,
+      "locStart": 27,
+      "locEnd": 31,
       "filePath": "src/handy-clamp.stories.tsx",
       "meta": {}
     },
@@ -81,7 +81,7 @@
         "Handy range slider"
       ],
       "locStart": 73,
-      "locEnd": 106,
+      "locEnd": 105,
       "filePath": "src/handy-range-slider.stories.tsx",
       "meta": {}
     },
