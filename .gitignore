@@ -30,4 +30,4 @@ yarn-error.log*
 
 # turbo
 .turbo
-.graph.png
+*.graph.png
