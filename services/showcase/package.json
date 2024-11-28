@@ -15,13 +15,13 @@
     "@handy-ones/handy-range-slider": "*",
     "@handy-ones/handy-scroll-strip": "*",
     "@handy-ones/handy-svg": "*",
-    "@ladle/react": "2.4.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@ladle/react": "5.0.3",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@handy-ones/eslint-config": "*",
     "@handy-ones/tsconfig": "*",
-    "gh-pages": "4.0.0"
+    "gh-pages": "6.3.0"
   }
 }

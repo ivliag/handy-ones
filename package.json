@@ -28,8 +28,8 @@
     "publish": "npm i && turbo run build && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "2.22.0",
+    "@changesets/cli": "2.29.7",
     "turbo": "latest"
   },
-  "packageManager": "npm@8.5.4"
+  "packageManager": "npm@11.6.1"
 }
