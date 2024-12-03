@@ -1,10 +1,10 @@
-import React, {MouseEvent, useEffect, useRef, useState} from 'react';
+import React, {ButtonHTMLAttributes, MouseEvent, useEffect, useRef, useState} from 'react';
 import {joinClassNames} from './utils';
 
 export interface Props {
     className?: string;
     lines?: number;
-    expandControl?: React.ReactElement | null;
+    expandControl?: React.ReactElement<ButtonHTMLAttributes<HTMLButtonElement>> | null;
     children: React.ReactNode;
 }
 
