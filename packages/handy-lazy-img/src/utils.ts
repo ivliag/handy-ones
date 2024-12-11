@@ -75,3 +75,23 @@ export function getImageDimensions(
 
   return {};
 }
+
+/**
+ * Preloads an image programmatically to verify it can be loaded
+ * @param src - Image source URL
+ * @param srcSet - Optional srcset attribute for responsive images
+ * @returns Promise that resolves with the loaded HTMLImageElement or rejects on error
+ */
+export function preloadImage(src: string, srcSet?: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+
+    if (srcSet) {
+      img.srcset = srcSet;
+    }
+    img.src = src;
+  });
+}
