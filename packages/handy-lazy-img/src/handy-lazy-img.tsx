@@ -39,6 +39,22 @@ export const HandyLazyImg = React.memo<Props>((props) => {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Event handler for successful image load
+  const handleImageLoad = (event: Event) => {
+    setLoadingState('loaded');
+    if (onLoad) {
+      onLoad(event);
+    }
+  };
+
+  // Event handler for image load error
+  const handleImageError = (error: Error) => {
+    setLoadingState('error');
+    if (onError) {
+      onError(error);
+    }
+  };
+
   // Set up IntersectionObserver to detect when image enters viewport
   useEffect(() => {
     const container = containerRef.current;
@@ -75,19 +91,9 @@ export const HandyLazyImg = React.memo<Props>((props) => {
     const srcSetString = srcSet ? getSrcSet(srcSet) : undefined;
 
     preloadImage(src, srcSetString)
-      .then(() => {
-        setLoadingState('loaded');
-        if (onLoad) {
-          onLoad(new Event('load'));
-        }
-      })
-      .catch((error) => {
-        setLoadingState('error');
-        if (onError) {
-          onError(error);
-        }
-      });
-  }, [isInView, src, srcSet, onLoad, onError]);
+      .then(() => handleImageLoad(new Event('load')))
+      .catch((error) => handleImageError(error));
+  }, [isInView, src, srcSet, handleImageLoad, handleImageError]);
 
   return (
     <div ref={containerRef}>
