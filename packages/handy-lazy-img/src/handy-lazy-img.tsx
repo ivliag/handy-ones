@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {ImageSource, preloadImage, getSrcSet} from './utils';
+import {ImageSource, preloadImage, getSrcSet, joinClassNames, getImageDimensions, generateBlurDataUrl} from './utils';
 
 type LoadingState = 'idle' | 'loading' | 'loaded' | 'error';
 
@@ -95,9 +95,54 @@ export const HandyLazyImg = React.memo<Props>((props) => {
       .catch((error) => handleImageError(error));
   }, [isInView, src, srcSet, handleImageLoad, handleImageError]);
 
+  // Calculate dimensions for aspect ratio box
+  const dimensions = getImageDimensions(width, height, aspectRatio);
+
+  // Get srcset string if provided
+  const srcSetString = srcSet ? getSrcSet(srcSet) : undefined;
+
+  // Determine which image source to show
+  const shouldShowActualImage = loadingState === 'loaded' || loadingState === 'loading';
+  const imageSrc = shouldShowActualImage ? src : (placeholder || generateBlurDataUrl());
+
   return (
-    <div ref={containerRef}>
-      <img ref={imgRef} src={src} alt={alt} />
+    <div
+      ref={containerRef}
+      className={joinClassNames('handy-lazy-img', className)}
+      style={dimensions.paddingBottom ? {paddingBottom: dimensions.paddingBottom} : undefined}
+    >
+      {/* Blur placeholder layer */}
+      {(loadingState === 'idle' || loadingState === 'loading') && (placeholder || blurHash) && (
+        <img
+          className="handy-lazy-img__placeholder"
+          src={placeholder || generateBlurDataUrl(blurHash)}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Actual image */}
+      {shouldShowActualImage && (
+        <img
+          ref={imgRef}
+          className={joinClassNames(
+            'handy-lazy-img__img',
+            loadingState === 'loading' ? 'handy-lazy-img__img_loading' : undefined,
+            loadingState === 'loaded' ? 'handy-lazy-img__img_loaded' : undefined
+          )}
+          src={imageSrc}
+          srcSet={srcSetString}
+          alt={alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          {...restProps}
+        />
+      )}
+
+      {/* Error state */}
+      {loadingState === 'error' && (
+        <div className="handy-lazy-img__error">Failed to load image</div>
+      )}
     </div>
   );
 });

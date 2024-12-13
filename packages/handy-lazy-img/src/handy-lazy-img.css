@@ -1,4 +1,41 @@
 .handy-lazy-img {
   position: relative;
   display: inline-block;
+  overflow: hidden;
+
+  &__placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px);
+    transform: scale(1.1);
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    &_loading {
+      opacity: 0;
+    }
+
+    &_loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    background-color: #f0f0f0;
+    color: #999;
+    font-size: 14px;
+  }
 }
