@@ -3,7 +3,7 @@ import {ImageSource, preloadImage, getSrcSet, joinClassNames, getImageDimensions
 
 type LoadingState = 'idle' | 'loading' | 'loaded' | 'error';
 
-export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface Props extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'srcSet' | 'onLoad' | 'onError'> {
   src: string;
   alt: string;
   placeholder?: string;
@@ -92,11 +92,13 @@ export const HandyLazyImg = React.memo<Props>((props) => {
 
     preloadImage(src, srcSetString)
       .then(() => handleImageLoad(new Event('load')))
-      .catch((error) => handleImageError(error));
+      .catch((error: Error) => handleImageError(error));
   }, [isInView, src, srcSet, handleImageLoad, handleImageError]);
 
   // Calculate dimensions for aspect ratio box
-  const dimensions = getImageDimensions(width, height, aspectRatio);
+  const numWidth = typeof width === 'number' ? width : undefined;
+  const numHeight = typeof height === 'number' ? height : undefined;
+  const dimensions = getImageDimensions(numWidth, numHeight, aspectRatio);
 
   // Get srcset string if provided
   const srcSetString = srcSet ? getSrcSet(srcSet) : undefined;

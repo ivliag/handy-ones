@@ -15,6 +15,7 @@ dist
 .cache
 .temp
 *.pem
+task.md
 
 # debug
 npm-debug.log*

@@ -3,7 +3,7 @@
  * @param color - Optional color in hex format (e.g., '#cccccc'). Defaults to neutral gray.
  * @returns Data URL string suitable for img src attribute
  */
-export function generateBlurDataUrl(color: string = '#cccccc'): string {
+export function generateBlurDataUrl(color = '#cccccc'): string {
   // Convert hex color to RGB values
   const hex = color.replace('#', '');
   const r = parseInt(hex.substring(0, 2), 16);
