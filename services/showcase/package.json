@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@handy-ones/handy-clamp": "*",
+    "@handy-ones/handy-lazy-img": "*",
     "@handy-ones/handy-range-slider": "*",
     "@handy-ones/handy-scroll-strip": "*",
     "@handy-ones/handy-svg": "*",

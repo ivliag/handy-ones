@@ -13,8 +13,8 @@ export function generateBlurDataUrl(color = '#cccccc'): string {
   // Create a 1x1 pixel SVG with the specified color
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><rect width="1" height="1" fill="rgb(${r},${g},${b})"/></svg>`;
 
-  // Convert to base64 data URL
-  const base64 = Buffer.from(svg).toString('base64');
+  // Convert to base64 data URL using browser-compatible method
+  const base64 = btoa(svg);
   return `data:image/svg+xml;base64,${base64}`;
 }
 
