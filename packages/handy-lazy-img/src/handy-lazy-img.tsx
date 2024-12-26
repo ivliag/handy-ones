@@ -103,9 +103,9 @@ export const HandyLazyImg = React.memo<Props>((props) => {
   // Get srcset string if provided
   const srcSetString = srcSet ? getSrcSet(srcSet) : undefined;
 
-  // Determine which image source to show
-  const shouldShowActualImage = loadingState === 'loaded' || loadingState === 'loading';
-  const imageSrc = shouldShowActualImage ? src : (placeholder || generateBlurDataUrl());
+  // Show placeholder until loaded
+  const showPlaceholder = (loadingState === 'idle' || loadingState === 'loading') && (placeholder || blurHash);
+  const showActualImage = loadingState === 'loaded';
 
   return (
     <div
@@ -113,8 +113,8 @@ export const HandyLazyImg = React.memo<Props>((props) => {
       className={joinClassNames('handy-lazy-img', className)}
       style={dimensions.paddingBottom ? {paddingBottom: dimensions.paddingBottom} : undefined}
     >
-      {/* Blur placeholder layer */}
-      {(loadingState === 'idle' || loadingState === 'loading') && (placeholder || blurHash) && (
+      {/* Blur placeholder layer - loads immediately, not lazy */}
+      {showPlaceholder && (
         <img
           className="handy-lazy-img__placeholder"
           src={placeholder || generateBlurDataUrl(blurHash)}
@@ -123,16 +123,12 @@ export const HandyLazyImg = React.memo<Props>((props) => {
         />
       )}
 
-      {/* Actual image */}
-      {shouldShowActualImage && (
+      {/* Actual image - only rendered after lazy load completes */}
+      {showActualImage && (
         <img
           ref={imgRef}
-          className={joinClassNames(
-            'handy-lazy-img__img',
-            loadingState === 'loading' ? 'handy-lazy-img__img_loading' : undefined,
-            loadingState === 'loaded' ? 'handy-lazy-img__img_loaded' : undefined
-          )}
-          src={imageSrc}
+          className="handy-lazy-img__img"
+          src={src}
           srcSet={srcSetString}
           alt={alt}
           width={dimensions.width}
