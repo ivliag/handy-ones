@@ -16,19 +16,6 @@ export const Basic = () => (
     </div>
 );
 
-export const WithPlaceholder = () => (
-    <div style={{height: '200vh', paddingTop: '100vh'}}>
-        <p>Scroll down to see the image with blur placeholder</p>
-        <HandyLazyImg
-            src="https://picsum.photos/800/600?random=1"
-            alt="Random landscape with placeholder"
-            placeholder="https://picsum.photos/20/15?random=1"
-            width={800}
-            height={600}
-        />
-    </div>
-);
-
 export const ResponsiveImages = () => (
     <div style={{height: '200vh', paddingTop: '100vh'}}>
         <p>Scroll down to see responsive image with srcSet</p>
@@ -80,7 +67,6 @@ export const MultipleImages = () => (
                 alt={`Gallery image ${index + 1}`}
                 aspectRatio={4 / 3}
                 style={{width: '100%'}}
-                placeholder={`https://picsum.photos/20/15?random=${index + 10}`}
             />
         ))}
     </div>

@@ -1,13 +1,11 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {ImageSource, preloadImage, getSrcSet, joinClassNames, getImageDimensions, generateBlurDataUrl} from './utils';
+import {ImageSource, preloadImage, getSrcSet, joinClassNames, getImageDimensions} from './utils';
 
 type LoadingState = 'idle' | 'loading' | 'loaded' | 'error';
 
 export interface Props extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'srcSet' | 'onLoad' | 'onError'> {
   src: string;
   alt: string;
-  placeholder?: string;
-  blurHash?: string;
   threshold?: number;
   rootMargin?: string;
   srcSet?: ImageSource[];
@@ -20,8 +18,6 @@ export const HandyLazyImg = React.memo<Props>((props) => {
   const {
     src,
     alt,
-    placeholder,
-    blurHash,
     threshold = 0.1,
     rootMargin = '50px',
     srcSet,
@@ -103,10 +99,6 @@ export const HandyLazyImg = React.memo<Props>((props) => {
   // Get srcset string if provided
   const srcSetString = srcSet ? getSrcSet(srcSet) : undefined;
 
-  // Show placeholder until loaded
-  const showPlaceholder = (loadingState === 'idle' || loadingState === 'loading') && (placeholder || blurHash);
-  const showActualImage = loadingState === 'loaded';
-
   // Build container style
   const containerStyle: React.CSSProperties = {};
   if (dimensions.paddingBottom) {
@@ -124,18 +116,8 @@ export const HandyLazyImg = React.memo<Props>((props) => {
       className={joinClassNames('handy-lazy-img', className)}
       style={containerStyle}
     >
-      {/* Blur placeholder layer - loads immediately, not lazy */}
-      {showPlaceholder && (
-        <img
-          className="handy-lazy-img__placeholder"
-          src={placeholder || generateBlurDataUrl(blurHash)}
-          alt=""
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Actual image - only rendered after lazy load completes */}
-      {showActualImage && (
+      {/* Show image only when in view and loaded */}
+      {loadingState === 'loaded' && (
         <img
           ref={imgRef}
           className="handy-lazy-img__img"

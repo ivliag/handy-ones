@@ -1,6 +1,6 @@
 # HandyLazyImg
 
-React component for intelligent image lazy-loading with IntersectionObserver API. Features placeholder support, blur-up effect, responsive images (srcset), and layout shift prevention. [Demo](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--basic)
+React component for intelligent image lazy-loading with IntersectionObserver API. Features responsive images (srcset) and layout shift prevention. [Demo](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--basic)
 
 ## Usage
 
@@ -17,21 +17,6 @@ export const LazyImage = () => (
     <HandyLazyImg
         src="https://example.com/image.jpg"
         alt="Description of image"
-        width={800}
-        height={600}
-    />
-)
-```
-
-#### With placeholder (blur effect)
-```typescript
-import {HandyLazyImg} from '@handy-ones/handy-lazy-img';
-
-export const ImageWithPlaceholder = () => (
-    <HandyLazyImg
-        src="https://example.com/image.jpg"
-        alt="Description of image"
-        placeholder="https://example.com/image-small.jpg"
         width={800}
         height={600}
     />
@@ -88,11 +73,10 @@ export const ImageWithErrorHandling = () => (
 ## Demo
 Please click `</>` button to see the demo source code:
 1. [Basic usage](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--basic)
-2. [With placeholder](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--with-placeholder)
-3. [Responsive images](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--responsive-images)
-4. [Aspect ratio](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--aspect-ratio)
-5. [Error handling](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--error-handling)
-6. [Multiple images](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--multiple-images)
+2. [Responsive images](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--responsive-images)
+3. [Aspect ratio](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--aspect-ratio)
+4. [Error handling](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--error-handling)
+5. [Multiple images](https://ivliag.github.io/handy-ones/?story=handy-lazy-img--multiple-images)
 
 ## API
 #### `Props`
@@ -100,8 +84,6 @@ Please click `</>` button to see the demo source code:
 interface HandyLazyImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     src: string; // Image source URL (required)
     alt: string; // Alt text for accessibility (required)
-    placeholder?: string; // Placeholder image URL (shown while loading)
-    blurHash?: string; // Color for generated blur placeholder
     threshold?: number; // IntersectionObserver threshold (default: 0.1)
     rootMargin?: string; // IntersectionObserver root margin (default: '50px')
     srcSet?: ImageSource[]; // Array of {src, width} for responsive images
