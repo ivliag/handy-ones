@@ -107,11 +107,22 @@ export const HandyLazyImg = React.memo<Props>((props) => {
   const showPlaceholder = (loadingState === 'idle' || loadingState === 'loading') && (placeholder || blurHash);
   const showActualImage = loadingState === 'loaded';
 
+  // Build container style
+  const containerStyle: React.CSSProperties = {};
+  if (dimensions.paddingBottom) {
+    // Using padding-bottom technique for aspect ratio
+    containerStyle.paddingBottom = dimensions.paddingBottom;
+  } else if (dimensions.width && dimensions.height) {
+    // Using explicit dimensions
+    containerStyle.width = dimensions.width;
+    containerStyle.height = dimensions.height;
+  }
+
   return (
     <div
       ref={containerRef}
       className={joinClassNames('handy-lazy-img', className)}
-      style={dimensions.paddingBottom ? {paddingBottom: dimensions.paddingBottom} : undefined}
+      style={containerStyle}
     >
       {/* Blur placeholder layer - loads immediately, not lazy */}
       {showPlaceholder && (
@@ -131,8 +142,6 @@ export const HandyLazyImg = React.memo<Props>((props) => {
           src={src}
           srcSet={srcSetString}
           alt={alt}
-          width={dimensions.width}
-          height={dimensions.height}
           {...restProps}
         />
       )}

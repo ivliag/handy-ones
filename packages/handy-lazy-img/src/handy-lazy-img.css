@@ -1,6 +1,6 @@
 .handy-lazy-img {
   position: relative;
-  display: inline-block;
+  display: block;
   overflow: hidden;
 
   &__placeholder {
@@ -12,13 +12,16 @@
     object-fit: cover;
     filter: blur(20px);
     transform: scale(1.1);
+    z-index: 0;
   }
 
   &__img {
-    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    position: relative;
+    height: 100%;
+    object-fit: cover;
     z-index: 1;
     animation: fadeIn 0.3s ease-in-out;
   }
