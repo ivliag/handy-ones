@@ -13,7 +13,7 @@ export interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement
   ariaLabel?: string;
 }
 
-export const HandyCopyClipboard: React.FC<Props> = (props) => {
+const HandyCopyClipboardComponent: React.FC<Props> = (props) => {
   const {
     text,
     children,
@@ -118,3 +118,6 @@ export const HandyCopyClipboard: React.FC<Props> = (props) => {
     </button>
   );
 };
+
+export const HandyCopyClipboard = React.memo(HandyCopyClipboardComponent);
+HandyCopyClipboard.displayName = 'HandyCopyClipboard';
