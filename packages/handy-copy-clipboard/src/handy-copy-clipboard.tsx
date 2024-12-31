@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { copyToClipboard } from './utils';
 
 export type CopyState = 'idle' | 'copying' | 'success' | 'error';
 
@@ -37,6 +38,41 @@ export const HandyCopyClipboard: React.FC<Props> = (props) => {
       }
     };
   }, []);
+
+  // Handle copy action
+  const handleCopy = async () => {
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    setCopyState('copying');
+
+    try {
+      await copyToClipboard(text);
+      setCopyState('success');
+
+      if (onCopy) {
+        onCopy(true);
+      }
+
+      // Reset to idle after timeout
+      timeoutRef.current = setTimeout(() => {
+        setCopyState('idle');
+      }, timeout);
+    } catch (error) {
+      setCopyState('error');
+
+      if (onCopy) {
+        onCopy(false, error as Error);
+      }
+
+      // Reset to idle after timeout
+      timeoutRef.current = setTimeout(() => {
+        setCopyState('idle');
+      }, timeout);
+    }
+  };
 
   return <button>Copy</button>;
 };
