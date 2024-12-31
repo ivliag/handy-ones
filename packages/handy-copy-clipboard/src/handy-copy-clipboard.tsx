@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { copyToClipboard } from './utils';
+import { copyToClipboard, joinClassNames } from './utils';
 
 export type CopyState = 'idle' | 'copying' | 'success' | 'error';
 
@@ -74,5 +74,47 @@ export const HandyCopyClipboard: React.FC<Props> = (props) => {
     }
   };
 
-  return <button>Copy</button>;
+  // Determine button content
+  let buttonContent: React.ReactNode;
+  if (typeof children === 'function') {
+    buttonContent = children(copyState);
+  } else if (children) {
+    buttonContent = children;
+  } else {
+    // Default state-based content
+    switch (copyState) {
+      case 'copying':
+        buttonContent = 'Copying...';
+        break;
+      case 'success':
+        buttonContent = successMessage;
+        break;
+      case 'error':
+        buttonContent = errorMessage;
+        break;
+      default:
+        buttonContent = 'Copy';
+    }
+  }
+
+  const isDisabled = disabled || copyState === 'copying';
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      disabled={isDisabled}
+      aria-label={ariaLabel}
+      aria-live="polite"
+      className={joinClassNames(
+        'handy-copy-clipboard',
+        `handy-copy-clipboard--${copyState}`,
+        isDisabled && 'handy-copy-clipboard--disabled',
+        className
+      )}
+      {...restProps}
+    >
+      {buttonContent}
+    </button>
+  );
 };
