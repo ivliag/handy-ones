@@ -3,7 +3,7 @@ import { copyToClipboard, joinClassNames } from './utils';
 
 export type CopyState = 'idle' | 'copying' | 'success' | 'error';
 
-export interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+export interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'onCopy'> {
   text: string;
   children?: React.ReactNode | ((state: CopyState) => React.ReactNode);
   timeout?: number;
@@ -102,7 +102,9 @@ const HandyCopyClipboardComponent: React.FC<Props> = (props) => {
   return (
     <button
       type="button"
-      onClick={handleCopy}
+      onClick={() => {
+        void handleCopy();
+      }}
       disabled={isDisabled}
       aria-label={ariaLabel}
       aria-live="polite"
