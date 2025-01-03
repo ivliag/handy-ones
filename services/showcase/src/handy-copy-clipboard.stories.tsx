@@ -1,4 +1,7 @@
-import { HandyCopyClipboard } from '@handy-ones/handy-copy-clipboard';
+import {
+  HandyCopyClipboard,
+  type CopyState,
+} from '@handy-ones/handy-copy-clipboard';
 import '@handy-ones/handy-copy-clipboard/dist/handy-copy-clipboard.css';
 
 export default {
@@ -30,7 +33,7 @@ export const CustomContent = () => (
 export const RenderProp = () => (
     <div style={{ padding: '20px' }}>
         <HandyCopyClipboard text="Render prop pattern example">
-            {(state) => {
+            {(state: CopyState) => {
                 switch (state) {
                     case 'copying':
                         return '⏳ Copying...';
@@ -50,7 +53,7 @@ export const WithCallbacks = () => (
     <div style={{ padding: '20px' }}>
         <HandyCopyClipboard
             text="Callback example text"
-            onCopy={(success, error) => {
+            onCopy={(success: boolean, error?: Error) => {
                 if (success) {
                     console.log('✅ Successfully copied to clipboard!');
                 } else {
@@ -107,7 +110,7 @@ function App() {
                             padding: '6px 12px'
                         }}
                     >
-                        {(state) => state === 'success' ? '✓ Copied' : 'Copy Code'}
+                        {(state: CopyState) => state === 'success' ? '✓ Copied' : 'Copy Code'}
                     </HandyCopyClipboard>
                 </div>
                 <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
@@ -125,7 +128,7 @@ export const EmailAddress = () => (
             text="example@email.com"
             successMessage="Email copied!"
         >
-            {(state) => (
+            {(state: CopyState) => (
                 <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     📧 example@email.com
                     {state === 'success' && <span style={{ fontSize: '12px' }}>✓</span>}
@@ -179,7 +182,7 @@ export const MultipleButtons = () => (
                     text={item.value}
                     style={{ width: '100%', fontSize: '12px' }}
                 >
-                    {(state) => state === 'success' ? '✓ Copied' : 'Copy'}
+                    {(state: CopyState) => state === 'success' ? '✓ Copied' : 'Copy'}
                 </HandyCopyClipboard>
             </div>
         ))}

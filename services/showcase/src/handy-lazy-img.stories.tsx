@@ -51,7 +51,7 @@ export const ErrorHandling = () => (
         <HandyLazyImg
             src="https://invalid-url-that-will-fail.com/image.jpg"
             alt="Broken image"
-            onError={(error) => console.error('Image failed to load:', error)}
+            onError={(error: Error) => console.error('Image failed to load:', error)}
             width={800}
             height={600}
         />

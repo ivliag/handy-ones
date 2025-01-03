@@ -16,6 +16,7 @@ dist
 .temp
 *.pem
 task.md
+task-*.md
 
 # debug
 npm-debug.log*
