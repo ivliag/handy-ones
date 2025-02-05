@@ -23,7 +23,7 @@ export function useIdle(options: number | UseIdleOptions): boolean {
     const events = typeof options === 'object' && options.events ? options.events : DEFAULT_EVENTS;
 
     const [isIdle, setIsIdle] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
     useEffect(() => {
         const handleActivity = () => {
