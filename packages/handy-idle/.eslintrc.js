@@ -1,8 +1,8 @@
 module.exports = {
     root: true,
-    extends: ["@handy-ones/eslint-config/react-internal.js"],
-    parser: "@typescript-eslint/parser",
+    extends: ['@handy-ones/eslint-config'],
     parserOptions: {
-        project: true,
-    },
+        tsconfigRootDir: __dirname,
+        project: './tsconfig.json'
+    }
 };
