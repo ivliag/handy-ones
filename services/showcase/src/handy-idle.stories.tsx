@@ -13,7 +13,7 @@ export const Basic = () => {
             <h2>User is: {isIdle ? '😴 Idle' : '👋 Active'}</h2>
             <p style={{ color: '#666', fontSize: '14px' }}>
                 Move your mouse, press a key, or scroll to be active.
-                After 5 seconds of inactivity, you'll be marked as idle.
+                After 5 seconds of inactivity, you&apos;ll be marked as idle.
             </p>
         </div>
     );
@@ -117,7 +117,7 @@ export const IdleWarning = () => {
                     animation: 'slideIn 0.3s ease-out',
                     zIndex: 1000
                 }}>
-                    <strong>⚠️ You've been idle for 8 seconds</strong>
+                    <strong>⚠️ You&apos;ve been idle for 8 seconds</strong>
                     <p style={{ margin: '5px 0 0 0', fontSize: '14px' }}>
                         Move your mouse to stay active
                     </p>
