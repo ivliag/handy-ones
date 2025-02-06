@@ -24,11 +24,27 @@ export function useIdle(options: number | UseIdleOptions): boolean {
 
     const [isIdle, setIsIdle] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+    const isIdleRef = useRef(isIdle);
+    const onIdleRef = useRef(onIdle);
+    const onActiveRef = useRef(onActive);
+
+    // Keep refs in sync
+    useEffect(() => {
+        isIdleRef.current = isIdle;
+    }, [isIdle]);
+
+    useEffect(() => {
+        onIdleRef.current = onIdle;
+    }, [onIdle]);
+
+    useEffect(() => {
+        onActiveRef.current = onActive;
+    }, [onActive]);
 
     useEffect(() => {
         const handleActivity = () => {
-            if (isIdle && onActive) {
-                onActive();
+            if (isIdleRef.current && onActiveRef.current) {
+                onActiveRef.current();
             }
             setIsIdle(false);
 
@@ -38,8 +54,8 @@ export function useIdle(options: number | UseIdleOptions): boolean {
 
             timerRef.current = setTimeout(() => {
                 setIsIdle(true);
-                if (onIdle) {
-                    onIdle();
+                if (onIdleRef.current) {
+                    onIdleRef.current();
                 }
             }, timeout);
         };
@@ -61,7 +77,7 @@ export function useIdle(options: number | UseIdleOptions): boolean {
                 window.removeEventListener(event, handleActivity);
             });
         };
-    }, [timeout, isIdle, onIdle, onActive, events]);
+    }, [timeout, events]);
 
     return isIdle;
 }
