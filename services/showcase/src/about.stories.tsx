@@ -14,6 +14,7 @@ export const HandyOnes = () => (
             <li><code className="ladle-code">handy-lazy-img</code> is a React component for intelligent image lazy-loading with responsive images support</li>
             <li><code className="ladle-code">handy-copy-clipboard</code> is a flexible copy-to-clipboard component with visual state feedback</li>
             <li><code className="ladle-code">handy-idle</code> is a React hook to detect user idle state with configurable timeout and callbacks</li>
+            <li><code className="ladle-code">handy-tabs</code> is a lightweight, accessible tabs component with keyboard navigation</li>
         </ol>
         <p>Source code: <a href="https://github.com/ivliag/handy-ones">Github</a></p>
     </div>
