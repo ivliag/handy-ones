@@ -15,6 +15,7 @@ Not a library, but a bunch of useful tools and components to make your life easi
 5. [`handy-lazy-img`](https://github.com/ivliag/handy-ones/tree/master/packages/handy-lazy-img) is a React component for intelligent image lazy-loading with responsive images support
 6. [`handy-copy-clipboard`](https://github.com/ivliag/handy-ones/tree/master/packages/handy-copy-clipboard) is a flexible copy-to-clipboard component with visual state feedback
 7. [`handy-idle`](https://github.com/ivliag/handy-ones/tree/master/packages/handy-idle) is a React hook to detect user idle state with configurable timeout and callbacks
+8. [`handy-tabs`](https://github.com/ivliag/handy-ones/tree/master/packages/handy-tabs) is a lightweight, accessible tabs component with keyboard navigation
 
 ## Monorepo
 1. This is a monorepository, components are developed and distributed separately
