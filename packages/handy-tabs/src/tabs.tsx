@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useRef, ReactNode, CSSProperties } from 'react';
 
 interface TabsContextValue {
   activeIndex: number;
@@ -22,10 +22,11 @@ interface TabsProps {
   index?: number;
   onChange?: (index: number) => void;
   className?: string;
+  style?: CSSProperties;
   children: ReactNode;
 }
 
-export function Tabs({ defaultIndex = 0, index, onChange, className, children }: TabsProps) {
+export function Tabs({ defaultIndex = 0, index, onChange, className, style, children }: TabsProps) {
   const [uncontrolledIndex, setUncontrolledIndex] = useState(defaultIndex);
   const tabCounterRef = useRef(0);
   const panelCounterRef = useRef(0);
@@ -54,17 +55,18 @@ export function Tabs({ defaultIndex = 0, index, onChange, className, children }:
 
   return (
     <TabsContext.Provider value={{ activeIndex, setActiveIndex, registerTab, registerPanel }}>
-      <div className={className}>{children}</div>
+      <div className={className} style={style}>{children}</div>
     </TabsContext.Provider>
   );
 }
 
 interface TabListProps {
   className?: string;
+  style?: CSSProperties;
   children: ReactNode;
 }
 
-export function TabList({ className, children }: TabListProps) {
+export function TabList({ className, style, children }: TabListProps) {
   const tabListRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -105,6 +107,7 @@ export function TabList({ className, children }: TabListProps) {
       ref={tabListRef}
       role="tablist"
       className={className}
+      style={style}
       onKeyDown={handleKeyDown}
     >
       {children}
@@ -114,11 +117,12 @@ export function TabList({ className, children }: TabListProps) {
 
 interface TabProps {
   className?: string;
+  style?: CSSProperties;
   disabled?: boolean;
   children: ReactNode;
 }
 
-export function Tab({ className, disabled, children }: TabProps) {
+export function Tab({ className, style, disabled, children }: TabProps) {
   const { activeIndex, setActiveIndex, registerTab } = useTabsContext();
   const [tabIndex] = useState(() => registerTab());
   const isActive = activeIndex === tabIndex;
@@ -147,6 +151,7 @@ export function Tab({ className, disabled, children }: TabProps) {
       tabIndex={isActive ? 0 : -1}
       disabled={disabled}
       className={className}
+      style={style}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       type="button"
@@ -158,10 +163,11 @@ export function Tab({ className, disabled, children }: TabProps) {
 
 interface TabPanelProps {
   className?: string;
+  style?: CSSProperties;
   children: ReactNode;
 }
 
-export function TabPanel({ className, children }: TabPanelProps) {
+export function TabPanel({ className, style, children }: TabPanelProps) {
   const { activeIndex, registerPanel } = useTabsContext();
   const [panelIndex] = useState(() => registerPanel());
   const isActive = activeIndex === panelIndex;
@@ -173,6 +179,7 @@ export function TabPanel({ className, children }: TabPanelProps) {
       id={`panel-${panelIndex}`}
       hidden={!isActive}
       className={className}
+      style={style}
     >
       {isActive && children}
     </div>
