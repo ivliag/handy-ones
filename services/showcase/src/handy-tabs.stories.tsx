@@ -89,11 +89,6 @@ export const StyledTabs = () => {
         transition: 'all 0.3s'
     };
 
-    const activeTabStyle = {
-        color: '#2196f3',
-        borderBottomColor: '#2196f3'
-    };
-
     return (
         <div style={{ padding: '20px' }}>
             <Tabs>
