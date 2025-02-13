@@ -103,13 +103,10 @@ export const StyledTabs = () => {
                     borderBottom: '2px solid #e0e0e0',
                     marginBottom: '24px'
                 }}>
-                    {['Home', 'Profile', 'Settings', 'About'].map((label, i) => (
+                    {['Home', 'Profile', 'Settings', 'About'].map((label) => (
                         <Tab
-                            key={i}
-                            style={{
-                                ...tabStyle,
-                                ...(window.activeTab === i ? activeTabStyle : {})
-                            }}
+                            key={label}
+                            style={tabStyle}
                         >
                             {label}
                         </Tab>
