@@ -1,0 +1,38 @@
+{
+  "name": "@handy-ones/handy-lazy-img",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**",
+    "src/**"
+  ],
+  "scripts": {
+    "dev:ts": "tsc --outDir ./dist --watch",
+    "build:ts": "tsc --outDir ./dist",
+    "dev:css": "postcss ./src/**/*.css --dir ./dist --watch",
+    "build:css": "postcss ./src/**/*.css --dir ./dist",
+    "dev": "concurrently \"npm:dev:*\"",
+    "build": "rm -rf ./dist && concurrently \"npm:build:*\"",
+    "lint": "eslint . --ignore && tsc --noEmit",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@handy-ones/eslint-config": "*",
+    "@handy-ones/tsconfig": "*",
+    "@types/react": "19.1.16",
+    "bem-react-classname": "2.0.0",
+    "concurrently": "9.2.1",
+    "postcss": "8.5.6",
+    "postcss-cli": "11.0.1",
+    "postcss-nested": "7.0.2",
+    "react": "19.1.1",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {
+    "bem-react-classname": "2.0.0"
+  }
+}
