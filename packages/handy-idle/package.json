@@ -1,0 +1,37 @@
+{
+  "name": "@handy-ones/handy-idle",
+  "version": "0.1.0",
+  "description": "A React hook to detect user idle state with configurable timeout and callbacks",
+  "keywords": [
+    "react",
+    "idle",
+    "user-idle",
+    "activity",
+    "hook",
+    "utility"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**",
+    "src/**"
+  ],
+  "scripts": {
+    "build:ts": "tsc --outDir ./dist",
+    "dev:ts": "tsc --outDir ./dist --watch",
+    "dev": "npm run dev:ts",
+    "build": "rm -rf ./dist && npm run build:ts",
+    "lint": "eslint . --ignore && tsc --noEmit",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@handy-ones/eslint-config": "*",
+    "@handy-ones/tsconfig": "*",
+    "@types/react": "19.1.16",
+    "react": "19.1.1",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+}
