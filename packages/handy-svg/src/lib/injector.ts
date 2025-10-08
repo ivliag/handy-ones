@@ -25,7 +25,7 @@ class Injector {
 
     private svgToSymbol({id, svgString}: {id: string; svgString: string}): SVGElement {
         const svgDocument = this.parseSvgString(svgString);
-        const viewBox = svgDocument.getAttribute(' viewBox');
+        const viewBox = svgDocument.getAttribute('viewBox');
         const symbol = document.createElementNS(SVG_NAMESPACE, 'symbol');
 
         if (viewBox) {
